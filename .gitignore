@@ -5,4 +5,7 @@
 /.vs/interview/DesignTimeBuild
 /.vs
 /bin/Debug/net8.0
+/obj/Debug/net8.0
 *.dll
+/obj/Debug/net8.0/interview.AssemblyInfo.cs
+/obj/Debug/net8.0/interview.AssemblyInfoInputs.cache
