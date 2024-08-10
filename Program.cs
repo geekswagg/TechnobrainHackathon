@@ -125,11 +125,11 @@ class Program
     {
         // Desired capabilities for the Appium server to interact with the mobile app
         AppiumOptions options = new AppiumOptions();
-        options.AddAdditionalCapability("platformName", "Android");
-        options.AddAdditionalCapability("deviceName", "Android Emulator");
-        options.AddAdditionalCapability("appPackage", "com.example.yourapp");  // Replace with your app's package name
-        options.AddAdditionalCapability("appActivity", "com.example.yourapp.MainActivity");  // Replace with your app's main activity
-        options.AddAdditionalCapability("automationName", "UiAutomator2");
+        options.AddAdditionalOption("platformName", "Android");
+        options.AddAdditionalOption("deviceName", "Android Emulator");
+        options.AddAdditionalOption("appPackage", "com.example.yourapp");  // Replace with your app's package name
+        options.AddAdditionalOption("appActivity", "com.example.yourapp.MainActivity");  // Replace with your app's main activity
+        options.AddAdditionalOption("automationName", "UiAutomator2");
 
         // Initialize the Appium driver
         AndroidDriver<IWebElement> driver = new AndroidDriver<IWebElement>(new Uri("http://127.0.0.1:4723/wd/hub"), options);
