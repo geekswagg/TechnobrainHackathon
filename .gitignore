@@ -9,3 +9,4 @@
 *.dll
 /obj/Debug/net8.0/interview.AssemblyInfo.cs
 /obj/Debug/net8.0/interview.AssemblyInfoInputs.cache
+/obj/interview.csproj.nuget.g.props
