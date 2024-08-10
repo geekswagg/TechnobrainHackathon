@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/interview/DesignTimeBuild
+/.vs
+/bin/Debug/net8.0
+/obj/Debug/net8.0
+*.dll
+/obj/Debug/net8.0/interview.AssemblyInfo.cs
+/obj/Debug/net8.0/interview.AssemblyInfoInputs.cache
+/obj/interview.csproj.nuget.g.props
+/obj/Debug/net8.0/interview.assets.cache
+/obj/interview.csproj.nuget.dgspec.json
+/obj/interview.csproj.nuget.g.targets
+/obj/project.assets.json
+/obj/project.nuget.cache
