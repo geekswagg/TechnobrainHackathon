@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenQA.Selenium.Appium;
 
 class Program
 {
@@ -11,6 +12,8 @@ class Program
         TestIntegersList();
         TestQuestionTwo();
         TestQuestionFour();
+        TestQuestionFive();
+        TestQuestionSix();
     }
 
     static void TestIntegersList()
@@ -109,6 +112,71 @@ class Program
         finally
         {
             // Close the browser
+            driver.Quit();
+        }
+    }
+
+    static void TestQuestionFive()
+    {
+
+    }
+
+    static void TestQuestionSix()
+    {
+        // Desired capabilities for the Appium server to interact with the mobile app
+        AppiumOptions options = new AppiumOptions();
+        options.AddAdditionalCapability("platformName", "Android");
+        options.AddAdditionalCapability("deviceName", "Android Emulator");
+        options.AddAdditionalCapability("appPackage", "com.example.yourapp");  // Replace with your app's package name
+        options.AddAdditionalCapability("appActivity", "com.example.yourapp.MainActivity");  // Replace with your app's main activity
+        options.AddAdditionalCapability("automationName", "UiAutomator2");
+
+        // Initialize the Appium driver
+        AndroidDriver<IWebElement> driver = new AndroidDriver<IWebElement>(new Uri("http://127.0.0.1:4723/wd/hub"), options);
+
+        try
+        {
+            // Launches the application (implicit with the initialization)
+
+            // Log in using predefined username and password
+            IWebElement usernameField = driver.FindElementById("com.example.yourapp:id/username");
+            IWebElement passwordField = driver.FindElementById("com.example.yourapp:id/password");
+            IWebElement loginButton = driver.FindElementById("com.example.yourapp:id/loginButton");
+
+            usernameField.SendKeys("your_username");
+            passwordField.SendKeys("your_password");
+            loginButton.Click();
+
+            Thread.Sleep(2000);  // Wait for the next screen to load
+
+            // Navigate to the Profile screen
+            IWebElement profileButton = driver.FindElementById("com.example.yourapp:id/profileButton");
+            profileButton.Click();
+
+            Thread.Sleep(2000);  // Wait for the profile screen to load
+
+            // Update profile information
+            IWebElement nameField = driver.FindElementById("com.example.yourapp:id/name");
+            nameField.Clear();
+            nameField.SendKeys("New Name");
+
+            IWebElement saveButton = driver.FindElementById("com.example.yourapp:id/saveButton");
+            saveButton.Click();
+
+            Thread.Sleep(2000);  // Wait for the save action to complete
+
+            // Verify that the profile was updated
+            string updatedName = nameField.GetAttribute("text");
+            if (updatedName != "New Name")
+            {
+                throw new Exception("Profile update failed!");
+            }
+
+            Console.WriteLine("Test passed: Profile updated successfully.");
+        }
+        finally
+        {
+            // Close the app
             driver.Quit();
         }
     }
