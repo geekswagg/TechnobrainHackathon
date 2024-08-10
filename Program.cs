@@ -10,6 +10,7 @@ class Program
     {
         TestIntegersList();
         TestQuestionTwo();
+        TestQuestionFour();
     }
 
     static void TestIntegersList()
@@ -68,6 +69,42 @@ class Program
             }
 
             Console.WriteLine("Login test passed.");
+        }
+        finally
+        {
+            // Close the browser
+            driver.Quit();
+        }
+    }
+
+    static void TestQuestionFour()
+    {
+        // Initialize the WebDriver (e.g., using Chrome)
+        IWebDriver driver = new ChromeDriver();
+
+        try
+        {
+            // Open a browser and navigate to Google
+            driver.Navigate().GoToUrl("https://www.google.com");
+
+            // Find the search box, enter the term "Test automation" and submit
+            IWebElement searchBox = driver.FindElement(By.Name("q"));
+            searchBox.SendKeys("Test automation");
+            searchBox.SendKeys(Keys.Enter);
+
+            // Wait for the results page to load
+            Thread.Sleep(2000); // Adjust this sleep time based on your page load time
+
+            // Verify that the search results page contains results
+            var results = driver.FindElements(By.CssSelector("div.g"));
+            if (results.Count > 0)
+            {
+                Console.WriteLine("Test passed: Search results found.");
+            }
+            else
+            {
+                Console.WriteLine("Test failed: No search results found.");
+            }
         }
         finally
         {
