@@ -16,3 +16,10 @@
 5. Browser Cleanup: The browser is closed using quit() in both Python and C#.
 These scripts assume the IDs for the elements (username, password, loginButton, welcomeMessage) are correct and that the home page title contains "Home".
 
+## Q3 - SQL Scripts
+
+1. Retrieve All Users Who Registered in the Last 30 Days - This query selects all columns from the Users table where the CreatedDate is within the last 30 days. The DATEADD function subtracts 30 days from the current date, which is retrieved using GETDATE().
+
+2. Find the Total Number of Users with a Specific Domain in the Email (e.g., '@example.com') - This query counts the number of users in the Users table whose Email ends with @example.com. The LIKE operator is used with the % wildcard to match any string before the @example.com domain.
+
+3. Update the Email of a User with a Specific 'UserId' - This query updates the Email field for the user with a UserId of 12345. Replace 12345 with the specific UserId and newemail@example.com with the new email address you want to set.
